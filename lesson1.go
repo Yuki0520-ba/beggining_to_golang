@@ -292,6 +292,6 @@ func foo(params ...int) {
 	}
 }
 
-func main() {
+func lesson1() {
 	sector14()
 }
