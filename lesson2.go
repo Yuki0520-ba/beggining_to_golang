@@ -173,7 +173,3 @@ func sector2_7() {
 func lesson2() {
 	sector2_7()
 }
-
-func main() {
-	lesson2()
-}
