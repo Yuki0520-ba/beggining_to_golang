@@ -1,5 +1,5 @@
 package main
 
 func main() {
-	lesson2()
+	Lesson2()
 }

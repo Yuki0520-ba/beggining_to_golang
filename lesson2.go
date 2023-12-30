@@ -170,6 +170,6 @@ func sector2_7() {
 	fmt.Println(count, string(data))
 }
 
-func lesson2() {
+func Lesson2() {
 	sector2_7()
 }
