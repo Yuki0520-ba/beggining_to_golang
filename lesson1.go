@@ -8,10 +8,6 @@ import (
 	"time"
 )
 
-func init() {
-	fmt.Println("init !!")
-	// buzz()
-}
 func buzz() {
 	fmt.Println("Buzz !!")
 	/*
@@ -280,10 +276,12 @@ func sector14() {
 	foo(10)
 	foo(10, 20, 30)
 
+	// Array型のsを展開してfoo関数へ渡す
 	s := []int{1, 2, 3}
 	foo(s...)
 }
 
+// 可変長引数
 func foo(params ...int) {
 	fmt.Println(len(params), params)
 

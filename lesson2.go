@@ -83,6 +83,12 @@ func sector2_3() {
 		fmt.Println(v)
 	}
 
+	// i -> 要素
+	// v -> 値
+	for i, v := range []int{1, 2, 3} {
+		fmt.Println(i, v)
+	}
+
 }
 
 func sector2_4() {
@@ -123,10 +129,13 @@ func getOSname() string {
 }
 
 func sector2_5() {
+	// 関数内で最後に実行するように定義することができる。
+	// deferはStack構造。つまり一番最初に定義したものが一番最後に実行される。
 	defer fmt.Println("world")
 	defer fmt.Println("!!")
 	fmt.Println("hello")
 
+	// ファイルの読み込み時にも利用することができる。必ずクローズしていくれる。
 	file, _ := os.Open("./README.md")
 	defer file.Close()
 	data := make([]byte, 100)
@@ -159,7 +168,7 @@ func loggSettings(logfile string) {
 func sector2_7() {
 	file, err := os.Open("README.md")
 	if err != nil {
-		log.Fatal("Error")
+		log.Fatal("Error", err)
 	}
 	defer file.Close()
 	data := make([]byte, 100)
@@ -171,5 +180,5 @@ func sector2_7() {
 }
 
 func Lesson2() {
-	sector2_7()
+	sector2_6()
 }

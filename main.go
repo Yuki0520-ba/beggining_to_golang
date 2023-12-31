@@ -1,5 +1,9 @@
 package main
 
+func init() {}
+
 func main() {
-	Lesson2()
+	// Lesson1()
+	// Lesson2()
+	Exercise()
 }
