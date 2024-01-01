@@ -200,20 +200,62 @@ func practice_for_method_and_reciever() {
 	fmt.Println("Befor my age is", john.age) // 10
 	john.add_my_age(3)
 	fmt.Println("After my age is", john.age) // 13
-
 }
+
+// ////////////////
+type nameSpeakerInterface interface {
+	say_my_name() string
+}
+type Japanese struct {
+	name           string
+	favorite_comic string
+}
+
+func (j Japanese) say_my_name() string {
+	return "私の名前は" + j.name + "です。"
+}
+
+type American struct {
+	name                string
+	favorite_nba_player string
+}
+
+func (a American) say_my_name() string {
+	return "My name is " + a.name + "."
+}
+
+func SelfIntroduction(human nameSpeakerInterface) {
+	fmt.Println(human.say_my_name())
+}
+
+func practice_for_interface() {
+	taro := Japanese{
+		name:           "太郎",
+		favorite_comic: "ワンピース",
+	}
+	john := American{
+		name:                "John",
+		favorite_nba_player: "Lebron James",
+	}
+
+	SelfIntroduction(taro) // result -> 私の名前は太郎です。
+	SelfIntroduction(john) // result -> My name is John.
+}
+
+//////////////////
 
 func Exercise() {
 	// Go_exercise_01("switch")
 	// Go_exercise_02()
 	// Go_exercise_03()
 	// Go_exercise_04()
-	Go_exercise_05()
+	// Go_exercise_05()
 
 	// practice_for_array_and_slice()
 	// practice_for_map()
 	// practice_for_my_type()
 	// practice_for_func()
 	// practice_for_method_and_reciever()
+	practice_for_interface()
 
 }
