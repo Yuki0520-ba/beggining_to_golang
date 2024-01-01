@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"mypkg/greeting" // <パッケージ名>/<モジュールへの相対パス> で記載する。
+	"mypkg/greeting" // <パッケージ名>/<モジュールへの相対パス> で記載。
 )
 
 func Go_exercise_01(method string) {
@@ -72,8 +72,12 @@ func Go_exercise_03() {
 }
 
 func Go_exercise_04() {
-	msg := greeting.Do()
+	msg := greeting.Do() // インポートした内部パッケージ内の関数を実行
 	fmt.Println(msg)
+
+	// 内部パッケージのインポート時にハマった
+	// 以下記事を参考に内部モジュールのインポート方法をかくんして解決した。
+	// https://qiita.com/fetaro/items/31b02b940ce9ec579baf
 }
 
 func practice_for_array_and_slice() {
