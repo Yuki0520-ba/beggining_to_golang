@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	mygreet "mypkg/greeting" // <パッケージ名>/<モジュールへの相対パス> で記載。
+	mygreet "mypkg/greeting" // <モジュール名>/<パッケージへの相対パス> で記載。
 
 	greeting "github.com/tenntenn/greeting/v2"
 )
