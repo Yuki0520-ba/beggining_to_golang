@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"package/greeting"
+	"mypkg/greeting" // <パッケージ名>/<モジュールへの相対パス> で記載する。
 )
 
 func Go_exercise_01(method string) {

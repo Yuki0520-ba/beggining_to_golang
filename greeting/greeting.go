@@ -1,5 +1,5 @@
 package greeting
 
 func Do() string {
-	return "Hello!!"
+	return "Hello by greeting module!!"
 }
