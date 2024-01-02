@@ -10,7 +10,7 @@ type addressSpeakerInterfce interface {
 }
 
 type selfIntroductionInteraface interface {
-	// 別のインターフェースを組み込むことができる。
+	// 別のインターフェースを組み込むことで
 	// 親子関係のような形でインタフェースを定義することができる。
 	// 複数のインタフェースが組み込まれている場合、ANDで機能する。
 	nameSpeakerInterface
