@@ -89,6 +89,53 @@ func Go_exercise_05() {
 	fmt.Println(msg)
 }
 
+type Stringer interface {
+	String() string
+}
+
+func ToStringer(v interface{}) (Stringer, error) {
+	s, is_stringer := v.(Stringer)
+	if is_stringer {
+		return s, nil
+	} else {
+		return nil, MyErr("Not Stringter")
+	}
+}
+
+type str string
+
+func (s str) String() string {
+	return string(s)
+}
+
+type MyErr string
+
+func (e MyErr) Error() string {
+	return fmt.Sprintf("Error >> %s", e)
+}
+
+func Go_exercise_06() {
+	// Stringerインターフェースに変換する関数を実装して、
+	// エラーが起きないかをチェックする
+	my_str := str("hoge hoge")
+	msg, err := ToStringer(my_str)
+	if err != nil {
+		fmt.Println("error ouured at contert to string.>> ", err)
+	} else {
+		fmt.Println("Converted msg is", msg)
+	}
+
+	// 以下の処理は変数my_stringがStringerインタフェースを満たしていないため、
+	// ToStringer関数でエラーとなってしまう
+	my_string := "not contvert variable."
+	msg, err = ToStringer(my_string)
+	if err != nil {
+		fmt.Println("error ouured at contert to string.>> ", err)
+	} else {
+		fmt.Println("Converted msg is", msg)
+	}
+}
+
 func practice_for_array_and_slice() {
 	var ns1 = [5]int{1, 2, 3, 4, 5} // 配列に該当。要素数を明示的に宣言してメモリを確保
 	var ns2 = []int{1, 2, 3, 4, 5}  // スライスに該当。要素数を明示的に宣言しない。動的に割り当てる
@@ -208,6 +255,7 @@ func Exercise() {
 	// Go_exercise_03()
 	// Go_exercise_04()
 	// Go_exercise_05()
+	Go_exercise_06()
 
 	// practice_for_array_and_slice()
 	// practice_for_map()
@@ -215,6 +263,6 @@ func Exercise() {
 	// practice_for_func()
 	// practice_for_method_and_reciever()
 	// practice_for_interface()
-	practice_for_embedded_struct()
+	// practice_for_embedded_struct()
 
 }
