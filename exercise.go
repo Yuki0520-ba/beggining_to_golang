@@ -242,6 +242,58 @@ func practice_for_interface() {
 	SelfIntroduction(john) // result -> My name is John.
 }
 
+type Tokyo_poeple struct {
+	//　自身で定義したタイプを組み込むことができる。
+	// 組み込んだタイプに定義されたプロパティも利用可能
+	address string
+	people  Japanese
+}
+
+func (t Tokyo_poeple) say_my_address() string {
+	return fmt.Sprintf("私は%sに住んでいます。", t.address)
+}
+func (t Tokyo_poeple) say_my_name() string {
+	return t.people.say_my_name()
+}
+
+type addressSpeakerInterfce interface {
+	say_my_address() string
+}
+
+type selfIntroductionInteraface interface {
+	// 別のインターフェースを組み込むことができる。
+	// 親子関係のような形でインタフェースを定義することができる。
+	// 複数のインタフェースが組み込まれている場合、ANDで機能する。
+	nameSpeakerInterface
+	addressSpeakerInterfce
+}
+
+func SelfIntroductionDetails(self selfIntroductionInteraface) {
+	fmt.Println(self.say_my_name())
+	fmt.Println(self.say_my_address())
+}
+
+func practice_for_embedded_struct() {
+	hanako := Tokyo_poeple{
+		address: "東京都港区",
+		people: Japanese{
+			name:           "花子",
+			favorite_comic: "花男",
+		},
+	}
+	SelfIntroductionDetails(hanako) // result -> 私の名前は花子です。私は東京都港区に住んでいます。
+
+	/*
+		以下の処理は「selfIntroductionInteraface」で定義された関数（say_my_addressとsay_my_name）が
+		実装されていないTypeを利用しているのでエラーとなる
+	*/
+	// jimmy := American{
+	// 	name:                "Jimmy",
+	// 	favorite_nba_player: "none",
+	// }
+	// SelfIntroductionDetails(jimmy)
+}
+
 //////////////////
 
 func Exercise() {
@@ -256,6 +308,7 @@ func Exercise() {
 	// practice_for_my_type()
 	// practice_for_func()
 	// practice_for_method_and_reciever()
-	practice_for_interface()
+	// practice_for_interface()
+	practice_for_embedded_struct()
 
 }
