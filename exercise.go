@@ -94,7 +94,7 @@ type Stringer interface {
 }
 
 func ToStringer(v interface{}) (Stringer, error) {
-	s, is_stringer := v.(Stringer)
+	s, is_stringer := v.(Stringer) // 変数vがStringerインタフェースを満たしているかどうか
 	if is_stringer {
 		return s, nil
 	} else {
