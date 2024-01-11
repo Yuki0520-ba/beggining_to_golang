@@ -1,9 +1,15 @@
 package main
 
 import (
+	"bytes"
+	"errors"
 	"fmt"
+	"io"
+	"log"
 	"math/rand"
+	"strings"
 	"time"
+	"unicode/utf8"
 
 	mygreet "mypkg/greeting" // <モジュール名>/<パッケージへの相対パス> で記載。
 
@@ -102,7 +108,7 @@ func ToStringer(v interface{}) (Stringer, error) {
 	}
 }
 
-type str string
+type str string // string型に関数をセットすることができないため、独自の文字列形式の方を定義する。
 
 func (s str) String() string {
 	return string(s)
@@ -134,6 +140,53 @@ func Go_exercise_06() {
 	} else {
 		fmt.Println("Converted msg is", msg)
 	}
+}
+
+type Scanner struct {
+	io  io.Reader
+	buf [16]byte
+}
+
+func (s *Scanner) Scan() (rune, error) {
+	n, err := s.io.Read(s.buf[:])
+	if err != nil {
+		return 0, err
+	}
+
+	r, size := utf8.DecodeRune(s.buf[:n])
+	if r == utf8.RuneError {
+		return 0, errors.New("RuneError ocuured")
+	}
+	s.io = io.MultiReader(bytes.NewReader(s.buf[size:n]))
+	return r, nil
+}
+
+func CreateScanner(r io.Reader) *Scanner {
+	return &Scanner{io: r}
+}
+
+func Go_exercise_07() {
+	// 1コードポイント(rune)ずつ読み込むScannerを作る。
+	// 初期化時にio.Readerを渡す
+	// 備忘：理解ができていていない状態で実装してしまっている。io.Readerの仕組みは。runeとは。低レイヤーの理解が必要か。
+	scnnr := CreateScanner(strings.NewReader("Hello, 世界"))
+	for {
+		r, err := scnnr.Scan()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("%c\n", r)
+	}
+
+	//  複数のエラーを結合しておくことができる。
+	err1 := errors.New("Error1")
+	err2 := errors.New("Error2")
+	err3 := errors.Join(err1, err2)
+	fmt.Errorf("error is %w", err3)
+
 }
 
 func practice_for_array_and_slice() {
@@ -249,13 +302,29 @@ func practice_for_method_and_reciever() {
 	fmt.Println("After my age is", john.age) // 13
 }
 
+func run_panic(msg string) {
+	panic("Panic at sub routine >> " + msg)
+}
+func practice_for_panic_and_recover() {
+	defer func() {
+		r := recover()
+		if r != nil {
+			fmt.Println(r)
+		}
+	}()
+	run_panic("test error.")
+	panic("Panic at main routine.") // こちらの処理はなされない。run_paic関数ないで最初にパニックが起きてしまい、その時点で終了される
+
+}
+
 func Exercise() {
 	// Go_exercise_01("switch")
 	// Go_exercise_02()
 	// Go_exercise_03()
 	// Go_exercise_04()
 	// Go_exercise_05()
-	Go_exercise_06()
+	// Go_exercise_06()
+	// Go_exercise_07()
 
 	// practice_for_array_and_slice()
 	// practice_for_map()
@@ -264,5 +333,6 @@ func Exercise() {
 	// practice_for_method_and_reciever()
 	// practice_for_interface()
 	// practice_for_embedded_struct()
+	practice_for_panic_and_recover()
 
 }
