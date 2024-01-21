@@ -1,4 +1,4 @@
-package main
+package goBasicalPractice
 
 import "fmt"
 

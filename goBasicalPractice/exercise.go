@@ -1,4 +1,4 @@
-package main
+package goBasicalPractice
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 	"time"
 	"unicode/utf8"
 
-	mygreet "mypkg/greeting" // <モジュール名>/<パッケージへの相対パス> で記載。
+	mygreet "mypkg/goBasicalPractice/greeting" // <モジュール名>/<パッケージへの相対パス> で記載。
 
 	greeting "github.com/tenntenn/greeting/v2"
 )
@@ -276,6 +276,7 @@ func practice_for_func() {
 	}
 }
 
+// memo: Structを関数の引数に渡すと都度変数のコピーが行われる。ポインタで渡すとオーバーヘッドを抑えることができる
 type Person struct {
 	name string
 	age  int
@@ -326,7 +327,8 @@ func Exercise() {
 	// Go_exercise_06()
 	// Go_exercise_07()
 	// Go_exercise_08() // at go_routine_excecise.go
-	Go_exercise_09() // at go_routine_excecise.go
+	// Go_exercise_09() // at go_routine_excecise.go
+	jsonExercise() // at json_exercise.go
 
 	// practice_for_array_and_slice()
 	// practice_for_map()

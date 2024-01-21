@@ -1,4 +1,4 @@
-package main
+package udemyLesson
 
 import (
 	"fmt"
@@ -180,5 +180,5 @@ func sector2_7() {
 }
 
 func Lesson2() {
-	sector2_6()
+	// sector2_6()
 }

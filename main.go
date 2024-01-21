@@ -1,9 +1,14 @@
 package main
 
+import (
+	"mypkg/goBasicalPractice"
+	"mypkg/udemyLesson"
+)
+
 func init() {}
 
 func main() {
-	// Lesson1()
-	// Lesson2()
-	Exercise()
+	udemyLesson.Lesson1()
+	udemyLesson.Lesson2()
+	goBasicalPractice.Exercise()
 }
