@@ -325,6 +325,8 @@ func Exercise() {
 	// Go_exercise_05()
 	// Go_exercise_06()
 	// Go_exercise_07()
+	// Go_exercise_08() // at go_routine_excecise.go
+	Go_exercise_09() // at go_routine_excecise.go
 
 	// practice_for_array_and_slice()
 	// practice_for_map()
@@ -333,6 +335,8 @@ func Exercise() {
 	// practice_for_method_and_reciever()
 	// practice_for_interface()
 	// practice_for_embedded_struct()
-	practice_for_panic_and_recover()
+	// practice_for_panic_and_recover()
+	// practice_for_chanel()
+	// practice_for_lock_and_unlock()
 
 }
