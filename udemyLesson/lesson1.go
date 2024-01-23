@@ -291,5 +291,5 @@ func foo(params ...int) {
 }
 
 func Lesson1() {
-	sector14()
+	// sector14()
 }

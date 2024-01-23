@@ -328,7 +328,7 @@ func Exercise() {
 	// Go_exercise_07()
 	// Go_exercise_08() // at go_routine_excecise.go
 	// Go_exercise_09() // at go_routine_excecise.go
-	jsonExercise() // at json_exercise.go
+	// jsonExercise() // at json_exercise.go
 
 	// practice_for_array_and_slice()
 	// practice_for_map()
