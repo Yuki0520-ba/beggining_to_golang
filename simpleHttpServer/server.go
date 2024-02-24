@@ -3,7 +3,6 @@ package simpleHttpServer
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 
@@ -114,10 +113,10 @@ func RunServer() {
 	router.PUT("/human/:id", updateHumanData)
 	router.DELETE("/human/:id", deleteHumanData)
 
-	port := 8080
-	err := http.ListenAndServe(fmt.Sprintf(":%v", port), router)
-	if err != nil {
-		log.Fatal("Can not run server.")
-	}
+	// port := 8080
+	// err := http.ListenAndServe(fmt.Sprintf(":%v", port), router)
+	// if err != nil {
+	// 	log.Fatal("Can not run server.")
+	// }
 
 }
